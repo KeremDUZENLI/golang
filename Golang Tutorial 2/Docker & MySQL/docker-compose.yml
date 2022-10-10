@@ -1,0 +1,53 @@
+version: '3.1'
+services:
+    mysql:
+        image: 'mysql:8.0'
+        environment:
+            - MYSQL_ROOT_PASSWORD=testes
+            - MYSQL_DATABASE=testes
+            - MYSQL_USER=testes
+            - MYSQL_PASSWORD=testes
+        ports:
+            - '3306:3306'
+
+
+
+
+# version: '3.7'
+
+# services:
+#   db:
+#     container_name: "tutorial_db"
+#     platform: linux/x86_64
+#     build:
+#       context: .
+#       dockerfile: db.Dockerfile
+#     networks:
+#       - default
+#     restart: always
+#     ports:
+#     - "3306:3306"
+#     environment:
+#       MYSQL_RANDOM_ROOT_PASSWORD: "secret"
+#       MYSQL_DATABASE: "test_database"
+#       MYSQL_USER: "test_user"
+#       MYSQL_PASSWORD: "secret"
+#     volumes:
+#     - mysql_data:/var/lib/mysql
+#     command: --default-authentication-plugin=mysql_native_password
+#   api:
+#     container_name: "tutorial_api"
+#     build:
+#       context: .
+#       dockerfile: api.Dockerfile
+#     ports:
+#     - "8080:8080"
+#     depends_on:
+#       - db
+#     volumes:
+#     - .:/Docker & MySQL/
+#   networks:
+#     default:
+#   volumes:
+#     mysql_data:
+

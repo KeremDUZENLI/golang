@@ -4,13 +4,12 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/joho/godotenv"
 	"github.com/slack-go/slack"
 )
 
 func main() {
-
-	os.Setenv("SLACK_BOT_TOKEN", "xoxb...")
-	os.Setenv("CHANNEL_ID", "...")
+	godotenv.Load(".env")
 
 	api := slack.New(os.Getenv("SLACK_BOT_TOKEN"))
 	channelArr := []string{os.Getenv("CHANNEL_ID")}

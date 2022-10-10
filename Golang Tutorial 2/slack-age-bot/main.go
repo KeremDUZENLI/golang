@@ -7,6 +7,8 @@ import (
 	"os"
 	"strconv"
 
+	"github.com/joho/godotenv"
+
 	"github.com/shomali11/slacker"
 )
 
@@ -22,8 +24,7 @@ func printCommandEvents(analyticsChannel <-chan *slacker.CommandEvent) {
 }
 
 func main() {
-	os.Setenv("SLACK_BOT_TOKEN", "xoxb...")
-	os.Setenv("SLACK_APP_TOKEN", "xapp...")
+	godotenv.Load(".env")
 
 	bot := slacker.NewClient(os.Getenv("SLACK_BOT_TOKEN"), os.Getenv("SLACK_APP_TOKEN"))
 

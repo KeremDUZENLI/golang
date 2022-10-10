@@ -1,6 +1,8 @@
 package models
 
 import (
+	"time"
+
 	"github.com/akhil/go-bookstore/pkg/config"
 	"github.com/jinzhu/gorm"
 )
@@ -8,7 +10,9 @@ import (
 var db *gorm.DB
 
 type Book struct {
-	gorm.Model
+	ID          uint `gorm:"primary_key"`
+	CreatedAt   time.Time
+	UpdatedAt   time.Time
 	Name        string `json:"name"`
 	Author      string `json:"author"`
 	Publication string `json:"publication"`
@@ -26,10 +30,10 @@ func (b *Book) CreateBook() *Book {
 	return b
 }
 
-func GetAllBooks() []Book {
+func GetAllBooks() *[]Book {
 	var Books []Book
 	db.Find(&Books)
-	return Books
+	return &Books
 }
 
 func GetBookById(Id int64) (*Book, *gorm.DB) {
