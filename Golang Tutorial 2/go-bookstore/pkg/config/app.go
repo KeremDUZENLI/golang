@@ -16,6 +16,7 @@ func Connect() {
 	if err != nil {
 		panic(err)
 	}
+
 	fmt.Printf("It is running don't worry")
 	db = d
 }

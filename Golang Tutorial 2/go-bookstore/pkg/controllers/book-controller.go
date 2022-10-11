@@ -16,7 +16,7 @@ var NewBook models.Book
 func GetBook(w http.ResponseWriter, r *http.Request) {
 	newBooks := models.GetAllBooks()
 	res, _ := json.Marshal(newBooks)
-	fmt.Println(string(res))
+
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
 	w.Write(res)
@@ -46,7 +46,6 @@ func CreateBook(w http.ResponseWriter, r *http.Request) {
 	b := CreateBook.CreateBook()
 	res, _ := json.Marshal(b)
 
-	fmt.Println(string(res))
 	w.WriteHeader(http.StatusOK)
 	w.Write(res)
 }
