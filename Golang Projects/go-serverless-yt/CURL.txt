@@ -1,0 +1,9 @@
+curl --header "Content-Type: application/json" --request POST --data '{"email": "akhil.sharma@myrl.tech", "firstName": "Akhil", "lastName": "Sharma"}' https://fnp78fteh7.execute-api.sa-east-1.amazonaws.com/staging
+
+curl -X GET https://fnp78fteh7.execute-api.sa-east-1.amazonaws.com/staging
+
+curl -X GET https://fnp78fteh7.execute-api.sa-east-1.amazonaws.com/staging\?email\=akhil.sharma@myrl.tech
+
+curl --header "Content-Type: application/json" --request PUT --data '{"email": "akhil.sharma@myrl.tech", "firstName": "lalalala", "lastName": "blalalala" https://fnp78fteh7.execute-api.sa-east-1.amazonaws.com/staging
+
+curl -X DELETE https://fnp78fteh7.execute-api.sa-east-1.amazonaws.com/staging\?email\=akhil.sharma@myrl.tech
