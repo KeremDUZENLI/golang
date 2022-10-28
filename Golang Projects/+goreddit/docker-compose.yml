@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  worth:
+    image: postgres:latest
+    environment:
+      POSTGRES_PASSWORD: reddit
+      POSTGRES_USER: reddit
+    expose:
+      - "5432"
+    ports:
+      - "5000:5432"
+    
+  adm:
+    image: adminer
+    depends_on:
+      - worth
+    ports:
+      - "8080:5000"
