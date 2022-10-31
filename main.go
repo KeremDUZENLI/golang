@@ -361,6 +361,29 @@ func Arithmetic(a int, b int, operator string) int {
 	}
 }
 
+func SliceString(a string) string {
+	return a[1:]
+}
+
+type Article struct {
+	Title       string `json:"Title"`
+	Description string `json:"Description"`
+	Content     string `json:"Content"`
+}
+
+func ArrayDelete() {
+	x := []Article{{"Title_1", "Description_1", "Content_1"}, {"Title_2", "Description_2", "Content_2"}}
+	// y := []Article{{}}
+
+	fmt.Printf("%T\n%v\n", x, x)
+	fmt.Println(x[0].Title)
+
+	x = append(x[:1], x[1+1:]...)
+
+	fmt.Println(x)
+	// fmt.Println(y)
+}
+
 func main() {
 	// pl(createList())
 	// pl(appendNumber(5))
@@ -384,5 +407,7 @@ func main() {
 	// fmt.Println(DNAtoRNA("ATGC"))
 	// fmt.Println(DeclareWinner(Fighter{"Harald", 20, 5}, Fighter{"Harry", 5, 4}, "Harry"))
 	// fmt.Println(AbbrevName("sam harris"))
-	fmt.Println(Arithmetic(8, 2, "add"))
+	// fmt.Println(Arithmetic(8, 2, "add"))
+	// fmt.Println(SliceString("/aaa"))
+	// ArrayDelete()
 }
