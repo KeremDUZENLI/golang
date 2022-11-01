@@ -1,0 +1,114 @@
+|common
+    |errors
+        error.go
+            package errors
+            func IsEmptyError(error)
+                return boolean
+
+    constant.go
+        package common
+        constant DEVELOPMENT = "development"
+	
+    env.go
+        package common
+        ("os")
+        func GetEnvironment(environment_name)
+            environment_name = created in environment "go/src/os/env.go"
+            check for error
+
+
+|controller
+		controller.go
+    		package controller
+
+
+|database
+		|migration
+    		migration.go
+        		package migration
+            ("module/database/model"
+            	"vendor")
+              
+            func Run(database)
+            		check for error
+
+
+		|model
+    		permission.go
+        		package model
+            Permission struct
+            		ID, Permission
+                
+        permissionRoles.go
+        		package model
+            PermissionRoles struct
+            		ID, RoleId, Roles, PermissionId, Permissions
+                
+        roles.go
+        		package model
+            Roles struct
+            		ID, Role
+                
+        users.go
+        		package model
+            Users struct
+            		ID, FullName, Email, Cpf, Password, RoleId, Roles
+                
+                
+		|seed
+    		seed.go
+        		package seed
+            ("fmt"
+            "module/database/model"
+            "vendor")
+            
+            types interface
+            		model.Permission, model.PermissionsRoles, model.Roles, model.Users
+                
+            func Run(database)
+            		model.Roles, model.Permissions, model.
+                
+                
+		db.go
+    		package dataBase
+        ("os"
+        "vendor")
+    		func ConnectDB()
+        		return db
+    		
+    		
+|router
+		router.go
+    		package router
+        ("gin-gonic"
+        "github"
+        "module/migration"
+        "module/model"
+        "module/seed"
+        "vendor")
+        
+        func Router()
+        		router
+            db
+            run :8080
+            
+        func isNeedSeed()
+        		return boolean
+            
+        func existTableUsers()
+        		return boolean
+            
+        func tableUsersIsEmpty()
+        		return boolean
+|
+|
+|
+|---main.go
+			package main
+			("module/router"
+				"vendor")
+        
+			func main() {
+      	vendor.loading(environments)
+        router.Router()
+      }
