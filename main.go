@@ -384,6 +384,36 @@ func ArrayDelete() {
 	// fmt.Println(y)
 }
 
+func RowSumOddNumbers(n int) {
+	var liste_ext [][]int
+	var x int = -1
+
+	for i := 0; i <= n; i++ {
+		var liste_int []int
+
+		for l := 0; l < i; l++ {
+			x += 2
+			liste_int = append(liste_int, x)
+			fmt.Printf("%v.Item = %v\n", i, x)
+		}
+
+		fmt.Printf("%v\n\n", liste_int)
+		liste_ext = append(liste_ext, liste_int)
+	}
+
+	fmt.Println(liste_ext)
+	fmt.Println(liste_ext[n:])
+
+	// TOTAL
+	var total int = 0
+
+	for j := 0; j < len(liste_ext[n:][0]); j++ {
+		total += (liste_ext[n:][0][j])
+	}
+
+	fmt.Printf("TOTAL: %v\n\n", total)
+}
+
 func main() {
 	// pl(createList())
 	// pl(appendNumber(5))
@@ -410,4 +440,5 @@ func main() {
 	// fmt.Println(Arithmetic(8, 2, "add"))
 	// fmt.Println(SliceString("/aaa"))
 	// ArrayDelete()
+	// RowSumOddNumbers(4)
 }
