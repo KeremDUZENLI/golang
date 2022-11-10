@@ -1,0 +1,3 @@
+go test         // show result
+
+go test -v      // show result of each
