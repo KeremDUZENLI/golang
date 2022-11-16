@@ -1,0 +1,52 @@
+package main
+
+import "fmt"
+
+type vivo struct {
+	Name   string
+	Number int
+}
+
+type claro struct {
+	ID     int
+	Person string
+}
+
+func (v *vivo) Connect() string {
+	return v.Name
+}
+
+func (c *claro) Connect() string {
+	return c.Person
+}
+
+type name string
+
+func (n *name) xyz() string {
+	return "asd"
+}
+
+type internet interface {
+	xyz() string
+}
+
+func main() {
+	// x := &vivo{
+	// 	Name: "ok",
+	// }
+
+	newType := new(name)
+	var showInterface internet = newType
+
+	fmt.Println(showInterface.xyz())
+
+	// y := &claro{
+	// 	Person: "kerem",
+	// }
+
+	// fmt.Println(x.Connect())
+	// fmt.Println(x)
+
+	// fmt.Println(y.Connect())
+	// fmt.Println(y)
+}

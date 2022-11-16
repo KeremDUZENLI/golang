@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"io/ioutil"
 	"log"
 	"net/http"
 	"os"
@@ -16,11 +17,16 @@ var mySigningKey = []byte(os.Getenv("SECRET"))
 
 func homePage(w http.ResponseWriter, r *http.Request) {
 
-	validToken, err := GenerateJWT()
-	if err != nil {
-		fmt.Fprintf(w, err.Error())
-	}
-	fmt.Fprintf(w, validToken)
+	validToken, _ := GenerateJWT()
+	client := &http.Client{}
+
+	req, _ := http.NewRequest("GET", "http://localhost:9002/", nil)
+	req.Header.Set("Token", validToken)
+
+	res, _ := client.Do(req)
+	body, _ := ioutil.ReadAll(res.Body)
+
+	fmt.Fprintf(w, string(body))
 }
 
 func handleRequests() {
@@ -37,12 +43,7 @@ func GenerateJWT() (string, error) {
 	claims["user"] = "Orkut PERUU"
 	claims["exp"] = time.Now().Add(time.Minute * 30).Unix()
 
-	tokenString, err := token.SignedString(mySigningKey)
-
-	if err != nil {
-		fmt.Errorf("ERROR: %s", err.Error())
-		return "", err
-	}
+	tokenString, _ := token.SignedString(mySigningKey)
 
 	return tokenString, nil
 }
@@ -51,12 +52,6 @@ func main() {
 	godotenv.Load(".env")
 
 	fmt.Println("My Simple Client")
-
-	// tokenString, err := GenerateJWT()
-	// if err != nil {
-	// 	fmt.Println("Error!")
-	// }
-	// fmt.Println(tokenString)
 
 	handleRequests()
 }
