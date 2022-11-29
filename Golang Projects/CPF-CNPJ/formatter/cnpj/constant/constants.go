@@ -1,7 +1,0 @@
-package constant
-
-const (
-	UNMASKED_CNPJ_MAX_LENGHT int    = 14
-	MASKED_CNPJ_WITH_ZEROS   string = "00.000.000/0000-00"
-	UNMASKED_CNPJ_WITH_ZEROS string = "00000000000000"
-)
