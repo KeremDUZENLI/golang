@@ -3,14 +3,17 @@ package main
 import (
 	"fmt"
 	"math"
+	"reflect"
 	"sort"
 	"strconv"
 	"strings"
+
+	"go.mongodb.org/mongo-driver/bson"
 )
 
-var pl = fmt.Println
+var PL = fmt.Println
 
-func createList() []int {
+func CreateList() []int {
 	arr := make([]int, 5)
 	for i := 1; i < 6; i++ {
 		arr[len(arr)-i] = i
@@ -18,7 +21,7 @@ func createList() []int {
 	return arr
 }
 
-func appendNumber(n int) []int {
+func AppendNumber(n int) []int {
 	arr2 := []int{}
 	for i := n; i > 0; i-- {
 		arr2 = append(arr2, i)
@@ -414,10 +417,40 @@ func RowSumOddNumbers(n int) {
 	fmt.Printf("TOTAL: %v\n\n", total)
 }
 
+func TypeFounder() any {
+	type Log struct {
+		Description string      `json:"description"`
+		Field       []string    `json:"field"`
+		Value       interface{} `json:"value"`
+	}
+
+	/* ### BSON ### */
+	type Struct_BSON struct {
+		ID     int
+		LOGS   Log
+		STATUS string
+		SCORE  int
+	}
+
+	var jsonEngineNaturalPerson = bson.D{
+		{Key: "_id", Value: "12345678910"},
+		{Key: "logs", Value: Log{}},
+		{Key: "status", Value: ""},
+		{Key: "score", Value: 1000},
+	}
+
+	doc, _ := bson.Marshal(jsonEngineNaturalPerson)
+	var struct_BSON_New Struct_BSON
+	bson.Unmarshal(doc, &struct_BSON_New)
+
+	typ := reflect.TypeOf(struct_BSON_New.LOGS)
+	return typ
+}
+
 func main() {
-	// pl(createList())
-	// pl(appendNumber(5))
-	// pl(EachCons([]int{1, 2, 3, 4, 5}, 3))
+	// PL(CreateList())
+	// PL(AppendNumber(5))
+	// PL(EachCons([]int{1, 2, 3, 4, 5}, 3))
 	// GetInput()
 	// fmt.Println(Digitize(1089))
 	// fmt.Println(ToAlternatingCase("Hello WOrld"))
@@ -441,4 +474,5 @@ func main() {
 	// fmt.Println(SliceString("/aaa"))
 	// ArrayDelete()
 	// RowSumOddNumbers(4)
+	// fmt.Println(TypeFounder())
 }
