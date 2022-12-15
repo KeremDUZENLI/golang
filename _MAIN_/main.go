@@ -447,6 +447,44 @@ func TypeFounder() any {
 	return typ
 }
 
+func Between(a, b int) []int {
+	var liste []int
+
+	for i := a; i <= b; i++ {
+		liste = append(liste, i)
+	}
+
+	return liste
+}
+
+func TwoToOne(s1 string, s2 string) string {
+	var liste1 []string = strings.Split(s1, "")
+	var liste2 []string = strings.Split(s2, "")
+	var liste0 []string = append(liste1, liste2...)
+
+	sort.Strings(liste0)
+	fmt.Println(liste0)
+
+	for i := 0; i < len(liste0)-1; i++ {
+		if liste0[i] == liste0[i+1] {
+			liste0 = append(liste0[:i], liste0[i+1:]...)
+			i = 0
+		}
+	}
+	fmt.Println(liste0)
+
+	/// SPECIAL CONDITION ///
+	if liste0[0] == liste0[1] {
+		liste0 = append(liste0[:0], liste0[1:]...)
+	}
+
+	fmt.Println(liste0)
+	/// SPECIAL CONDITION ///
+
+	stringRes := strings.Join(liste0, "")
+	return stringRes
+}
+
 func main() {
 	// PL(CreateList())
 	// PL(AppendNumber(5))
@@ -475,4 +513,6 @@ func main() {
 	// ArrayDelete()
 	// RowSumOddNumbers(4)
 	// fmt.Println(TypeFounder())
+	// fmt.Println(Between(1, 4))
+	// fmt.Println(TwoToOne("loopingisfunbutdangerousa", "lessdangerousthancodinga"))
 }
