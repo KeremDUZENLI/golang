@@ -9,6 +9,8 @@ import (
 	"strings"
 
 	"go.mongodb.org/mongo-driver/bson"
+	"golang.org/x/text/cases"
+	"golang.org/x/text/language"
 )
 
 var PL = fmt.Println
@@ -205,7 +207,8 @@ func ToJadenCase(str string) string {
 	var liste []string
 
 	for i := 0; i < len(splt); i++ {
-		liste = append(liste, strings.Title(splt[i]))
+		// liste = append(liste, strings.Title(splt[i]))
+		liste = append(liste, cases.Title(language.Und, cases.NoLower).String(splt[i]))
 	}
 
 	emptyListJoin := strings.Join(liste, " ")
@@ -485,11 +488,63 @@ func TwoToOne(s1 string, s2 string) string {
 	return stringRes
 }
 
+func EndsWidth(str, ending string) bool {
+	return strings.HasSuffix(str, ending)
+}
+
+func FindOdd(seq []int) []int {
+	sort.Ints(seq)
+	dict := make(map[int]int)
+	// var finalListe []int
+	finalListe := []int{}
+
+	for _, num := range seq {
+		dict[num] = dict[num] + 1
+	}
+	fmt.Println(dict)
+
+	for number, count := range dict {
+		// fmt.Println(number, count)
+		if count%2 == 1 {
+			finalListe = append(finalListe, number)
+		}
+	}
+	return finalListe
+}
+
+func Count(liste []string, findVar string) int {
+	dict := make(map[string]int)
+
+	for _, str := range liste {
+		dict[str] += 1
+	}
+
+	return dict[findVar]
+}
+
+func Input1() string {
+	var path string
+	print("Folder Path:   ")
+	fmt.Scanln(&path)
+
+	return path
+}
+
+func Input2(x *string) {
+	var path string
+	print("Folder Path:   ")
+	fmt.Scanln(&path)
+
+	*x = path
+}
+
 func main() {
 	// PL(CreateList())
 	// PL(AppendNumber(5))
 	// PL(EachCons([]int{1, 2, 3, 4, 5}, 3))
+
 	// GetInput()
+
 	// fmt.Println(Digitize(1089))
 	// fmt.Println(ToAlternatingCase("Hello WOrld"))
 	// fmt.Println(Contamination("abcd", "z"))
@@ -510,9 +565,22 @@ func main() {
 	// fmt.Println(AbbrevName("sam harris"))
 	// fmt.Println(Arithmetic(8, 2, "add"))
 	// fmt.Println(SliceString("/aaa"))
+
 	// ArrayDelete()
 	// RowSumOddNumbers(4)
+
 	// fmt.Println(TypeFounder())
 	// fmt.Println(Between(1, 4))
 	// fmt.Println(TwoToOne("loopingisfunbutdangerousa", "lessdangerousthancodinga"))
+	// fmt.Println(EndsWidth("abc", "ab"))
+	// fmt.Println(FindOdd([]int{10, 20, 30, 56, 67, 90, 10, 20}))
+	// fmt.Println(Count([]string{"a", "b", "c", "c"}, "c"))
+
+	// x := Input1()
+	// fmt.Println(x)
+
+	// var y, z string
+	// Input2(&y)
+	// Input2(&z)
+	// fmt.Println(y, z)
 }
