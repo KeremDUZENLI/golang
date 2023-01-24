@@ -14,6 +14,7 @@ import (
 )
 
 var PL = fmt.Println
+var Liste []any
 
 func CreateList() []int {
 	arr := make([]int, 5)
@@ -522,6 +523,13 @@ func Count(liste []string, findVar string) int {
 	return dict[findVar]
 }
 
+func Pointer(str string, listeOut *[]any) {
+	splt := strings.Split(str, "")
+	for _, v := range splt {
+		*listeOut = append(*listeOut, v)
+	}
+}
+
 func Input1() string {
 	var path string
 	print("Folder Path:   ")
@@ -575,6 +583,9 @@ func main() {
 	// fmt.Println(EndsWidth("abc", "ab"))
 	// fmt.Println(FindOdd([]int{10, 20, 30, 56, 67, 90, 10, 20}))
 	// fmt.Println(Count([]string{"a", "b", "c", "c"}, "c"))
+
+	// Pointer("pointer", &Liste)
+	// fmt.Println(Liste)
 
 	// x := Input1()
 	// fmt.Println(x)
