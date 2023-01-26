@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"generics/function"
 	"generics/variable"
 )
@@ -9,80 +10,82 @@ func main() {
 
 	// Playingcard -----------------------------------------------------------
 
-	// playingcardNew := function.PlayingcardFuncNew("SUITN", "RANKN")
-	// fmt.Println(playingcardNew)
+	fmt.Println("\nPlayingcardFuncNew: ", function.PlayingcardFuncNew("SUITN", "RANKN"))
+	fmt.Println("\nPlayingcardFuncPoint: ", function.PlayingcardFuncPoint("SUITP", "RANKP"))
 
-	// playingcardPoint := function.PlayingcardFuncPoint("SUITP", "RANKP")
-	// fmt.Println(playingcardPoint)
-
-	// playingcardCustom := variable.Playingcard{
-	// 	Suit: "SUITC",
-	// 	Rank: "RANKC",
-	// }
-	// fmt.Println(playingcardCustom.String())
+	playingcardCustom := variable.Playingcard{Suit: "SUITC", Rank: "RANKC"}
+	fmt.Println("\nString: ", playingcardCustom.String())
+	fmt.Println("\nName: ", playingcardCustom.Name())
 
 	// Tradingcard -------------------------------------------------------------
 
-	// TradingcardNew := function.TradingcardFuncNew("xxx")
-	// fmt.Printf("\n--- drawing playing card ---\n %v\n", TradingcardNew)
+	fmt.Println("\nTradingcardFuncNew: ", function.TradingcardFuncNew("xxx"))
+	fmt.Println("\nTradingcardFuncPoint: ", function.TradingcardFuncPoint("xxx"))
 
-	// TradingcardPoint := function.TradingcardFuncPoint("zzz")
-	// fmt.Printf("\n--- drawing playing card ---\n %v\n", TradingcardPoint)
-
-	// TradingcardCustom := variable.Tradingcard{
-	// 	Collectablename: "CUSTOM",
-	// }
-	// fmt.Printf("\n--- drawing playing card ---\n %v\n", TradingcardCustom.String())
+	tradingcardCustom := variable.Tradingcard{Collectablename: "CUSTOM"}
+	fmt.Println("\nString: ", tradingcardCustom.String())
+	fmt.Println("\nName: ", tradingcardCustom.Name())
 
 	// Deck -----------------------------------------------------------------
 
-	// deckNew := function.DeckFuncNew()
-	// fmt.Printf("\n--- drawing playing card ---\n %v\n", deckNew)
+	fmt.Println("\nDeckFuncNew: ", function.DeckFuncNew())
+	fmt.Println("\nDeckFuncPoint: ", function.DeckFuncPoint())
 
-	// deckPoint := function.DeckFuncPoint()
-	// fmt.Printf("\n--- drawing playing card ---\n %v\n", deckPoint)
-
-	// deckPointCard := deckPoint.Randomcard()
-	// fmt.Printf("\ndrew card: %s\n", deckPointCard)
-
-	// deckPointCardSpec, ok := deckPointCard.(*variable.Playingcard)
-	// if !ok {
-	// 	fmt.Printf("card received wasn't a playing card!\n")
-	// 	os.Exit(1)
-	// }
-	// fmt.Printf("card suit: %s\n", deckPointCardSpec.Suit)
-	// fmt.Printf("card rank: %s\n", deckPointCardSpec.Rank)
-
-	// var listeOut variable.Deck
-	// function.DeckFuncCustom(&listeOut.Cards)
-	// fmt.Printf("\n%v\n", listeOut.Cards)
+	randomcard := function.DeckFuncPoint().Randomcard()
+	fmt.Println("\nRandomcard: ", randomcard)
+	fmt.Println("\nRandomcard String: ", randomcard.(*variable.Playingcard).String())
+	fmt.Println("\nRandomcard Name: ", randomcard.(*variable.Playingcard).Name())
+	fmt.Println("\nRandomcard Rank: ", randomcard.(*variable.Playingcard).Rank)
+	fmt.Println("\nRandomcard Suit: ", randomcard.(*variable.Playingcard).Suit)
 
 	// Generic ------------------------------------------------------------
 
-	// GenericNewDeck := function.GenericFuncNew()
-	// fmt.Printf("\n--- drawing playing card ---\n %v\n", GenericNewDeck)
+	fmt.Println("\nGenericFuncNew: ", function.GenericFuncNew())
+	fmt.Println("\nGenericFuncPoint: ", function.GenericFuncPoint())
 
-	// GenericNewDeckCard := GenericNewDeck.Randomcard()
-	// fmt.Printf("\ndrewcard: %s\n", GenericNewDeckCard)
+	RandomcardGeneric := function.GenericFuncPoint().Randomcard()
+	fmt.Println("\nRandomcardGeneric: ", RandomcardGeneric)
+	fmt.Println("\nRandomcardGeneric String: ", RandomcardGeneric.String())
+	fmt.Println("\nRandomcardGeneric Name: ", RandomcardGeneric.Name())
+	fmt.Println("\nRandomcardGeneric Rank: ", RandomcardGeneric.Rank)
+	fmt.Println("\nRandomcardGeneric Suit: ", RandomcardGeneric.Suit)
 
-	// GenericPointDeck := function.GenericFuncPoint()
-	// fmt.Printf("\n--- drawing playing card ---\n %v\n", GenericPointDeck)
+	fmt.Println("\nGenericFuncPointTradingCard: ", function.GenericFuncPointTradingcard())
 
-	// GenericPointDeckCard := GenericPointDeck.Randomcard()
-	// fmt.Printf("\ndrewcard: %s\n", GenericPointDeckCard)
-	// fmt.Printf("card suit: %s\n", GenericPointDeckCard.Suit)
-	// fmt.Printf("card rank: %s\n", GenericPointDeckCard.Rank)
+	RandomcardTradingGeneric := function.GenericFuncPointTradingcard().Randomcard()
+	fmt.Println("\nRandomcardTradingGeneric: ", RandomcardTradingGeneric)
+	fmt.Println("\nRandomcardTradingGeneric String: ", RandomcardTradingGeneric.String())
+	fmt.Println("\nRandomcardTradingGeneric Name: ", RandomcardTradingGeneric.Name())
+	fmt.Println("\nRandomcardTradingGeneric Collectablename: ", RandomcardTradingGeneric.Collectablename)
 
 	// GenericT ----------------------------------------------------------
 
-	// GenericPointTradingcard := function.GenericFuncPointT()
-	// fmt.Printf("\n--- drawing trading card ---\n %v\n", GenericPointTradingcard)
+	fmt.Println("\nGenericFuncPointT: ", function.GenericFuncPointT())
+	fmt.Println("\nGenericFuncPointT Cards: ", function.GenericFuncPointT().CardsT)
 
-	// GenericPointTradingcardCard := GenericPointTradingcard.Randomcard()
-	// fmt.Printf("\ndrew card: %s", GenericPointTradingcardCard)
-	// fmt.Printf("\ncard collectable name:: %s\n", GenericPointTradingcardCard.Collectablename)
+	randomcardGenericT := function.GenericFuncPointT().RandomcardT()
+	fmt.Println("\nRandomcardGenericT: ", randomcardGenericT)
+	fmt.Println("\nRandomcardGenericT String: ", randomcardGenericT.String())
+	fmt.Println("\nRandomcardGenericT Name: ", randomcardGenericT.Name())
+	fmt.Println("\nRandomcardGenericT Rank: ", function.GenericFuncPointT().RandomcardT().Rank)
+	fmt.Println("\nRandomcardGenericT Suit: ", function.GenericFuncPointT().RandomcardT().Suit)
 
-	GenericPointDeckT := function.GenericFuncPoint()
-	GenericPointDeckCardT := GenericPointDeckT.Randomcard()
-	function.PrintCard[*variable.Playingcard](GenericPointDeckCardT)
+	// -------------------------------------------------------------------
+
+	function.PrintString[*variable.Playingcard](RandomcardGeneric)
+	function.PrintString[*variable.Tradingcard](RandomcardTradingGeneric)
+
+	function.PrintName[*variable.Playingcard](RandomcardGeneric)
+	function.PrintName[*variable.Tradingcard](RandomcardTradingGeneric)
+
+	// -------------------------------------------------------------------
+
+	x := &variable.Playingcard{
+		Suit: "NEW",
+		Rank: "1000",
+	}
+
+	fmt.Println("\nAdd Card New: ", function.GenericFuncPoint().Addcard(x))
+
+	fmt.Println("\nAdd Card New: ", function.GenericFuncPointT().AddcardT(x))
 }

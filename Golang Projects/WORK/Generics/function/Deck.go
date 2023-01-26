@@ -33,14 +33,3 @@ func DeckFuncPoint() *variable.Deck {
 
 	return DeckNew
 }
-
-func DeckFuncCustom(listeOut *[]any) {
-	suits := []string{"Diamonds", "Hearts", "Clubs", "Spades"}
-	ranks := []string{"A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"}
-
-	for _, suit := range suits {
-		for _, rank := range ranks {
-			*listeOut = append(*listeOut, PlayingcardFuncNew(suit, rank))
-		}
-	}
-}

@@ -8,8 +8,9 @@ type Generic[C any] struct {
 	Cards []C
 }
 
-func (c *Generic[C]) Addcard(card C) {
+func (c *Generic[C]) Addcard(card C) []C {
 	c.Cards = append(c.Cards, card)
+	return c.Cards
 }
 
 func (c *Generic[C]) Randomcard() C {

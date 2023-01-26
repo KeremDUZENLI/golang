@@ -1,29 +1,24 @@
 package variable
 
 import (
-	"fmt"
 	"math/rand"
 )
 
 type GenericT[T Interfac] struct {
-	Cards []T
+	CardsT []T
 }
 
 type Interfac interface {
-	fmt.Stringer
-
-	NameT() string
+	String() string
+	Name() string
 }
 
-func (t *Generic[T]) AddcardT(card T) {
-	t.Cards = append(t.Cards, card)
+func (t *GenericT[T]) AddcardT(card T) []T {
+	t.CardsT = append(t.CardsT, card)
+	return t.CardsT
 }
 
 func (t *GenericT[T]) RandomcardT() T {
-	r := rand.Intn(len(t.Cards))
-	return t.Cards[r]
-}
-
-func (t *GenericT[T]) NameT(input string) string {
-	return input
+	r := rand.Intn(len(t.CardsT))
+	return t.CardsT[r]
 }

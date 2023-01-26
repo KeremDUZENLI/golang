@@ -32,7 +32,7 @@ func GenericFuncPoint() *variable.Generic[*variable.Playingcard] {
 	return DeckNew
 }
 
-func GenericFuncPointT() *variable.Generic[*variable.Tradingcard] {
+func GenericFuncPointTradingcard() *variable.Generic[*variable.Tradingcard] {
 	collectables := []string{"Sammy", "Droplets", "Spaces", "App Platform"}
 	DeckNew := &variable.Generic[*variable.Tradingcard]{}
 

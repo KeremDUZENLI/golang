@@ -1,8 +1,6 @@
 package variable
 
-import (
-	"fmt"
-)
+import "fmt"
 
 type Playingcard struct {
 	Suit string
@@ -10,9 +8,9 @@ type Playingcard struct {
 }
 
 func (pc *Playingcard) String() string {
-	return fmt.Sprintf("%s - %s", pc.Suit, pc.Rank)
+	return fmt.Sprintf("%s -- %s", pc.Suit, pc.Rank)
 }
 
-func (pc *Playingcard) NameT() string {
+func (pc *Playingcard) Name() string {
 	return pc.String()
 }
