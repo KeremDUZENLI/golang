@@ -1,39 +1,39 @@
 package main
 
-import (
-	"fmt"
-)
+import "fmt"
+
+type IELTS struct {
+	ScoresIELTS []float64
+}
+
+type TOEFL struct {
+	ScoresTOEFL [][]int
+}
+
+type GenericT[T interfac] struct {
+	ScoresT T
+}
+
+type interfac interface {
+}
+
+func (t *GenericT[T]) LOOP(liste T) T {
+	t.ScoresT = liste
+	return t.ScoresT
+}
+
+func GenericFuncT1() *GenericT[*IELTS] {
+	return &GenericT[*IELTS]{}
+}
+
+func GenericFuncT2() *GenericT[*TOEFL] {
+	return &GenericT[*TOEFL]{}
+}
 
 func main() {
-	scoresIELTS := []float64{4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5, 8.0, 8.5, 9.0}
-	scoresTOEFL := [][]int{{0, 31}, {32, 34}, {35, 45}, {46, 59}, {60, 78}, {79, 93}, {94, 101}, {102, 109}, {110, 114}, {115, 117}, {118, 120}}
-
-	LOOP(scoresIELTS)
-	LOOP(scoresTOEFL)
-	// IELTS()
-	// TOEFL()
-}
-
-func LOOP(anyList []any) {
-	for x := 0; x <= 10; x++ {
-		fmt.Println(anyList[x])
+	newIELTS := &IELTS{
+		ScoresIELTS: []float64{4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5, 8.0, 8.5, 9.0},
 	}
-}
 
-func IELTS() {
-	scoresIELTS := []float64{4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5, 8.0, 8.5, 9.0}
-
-	for i := 0; i <= 10; i++ {
-		// time.Sleep(1 * time.Second)
-		fmt.Printf("%.1f\n", scoresIELTS[i])
-	}
-}
-
-func TOEFL() {
-	scoresTOEFL := [][]int{{0, 31}, {32, 34}, {35, 45}, {46, 59}, {60, 78}, {79, 93}, {94, 101}, {102, 109}, {110, 114}, {115, 117}, {118, 120}}
-
-	for l := 0; l <= 10; l++ {
-		// time.Sleep(100 * time.Millisecond)
-		fmt.Println(scoresTOEFL[l])
-	}
+	fmt.Println(GenericFuncT1().LOOP(newIELTS))
 }

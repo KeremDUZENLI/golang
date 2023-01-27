@@ -67,8 +67,8 @@ func main() {
 	fmt.Println("\nRandomcardGenericT: ", randomcardGenericT)
 	fmt.Println("\nRandomcardGenericT String: ", randomcardGenericT.String())
 	fmt.Println("\nRandomcardGenericT Name: ", randomcardGenericT.Name())
-	fmt.Println("\nRandomcardGenericT Rank: ", function.GenericFuncPointT().RandomcardT().Rank)
-	fmt.Println("\nRandomcardGenericT Suit: ", function.GenericFuncPointT().RandomcardT().Suit)
+	fmt.Println("\nRandomcardGenericT Rank: ", randomcardGenericT.Rank)
+	fmt.Println("\nRandomcardGenericT Suit: ", randomcardGenericT.Suit)
 
 	// -------------------------------------------------------------------
 
@@ -86,6 +86,5 @@ func main() {
 	}
 
 	fmt.Println("\nAdd Card New: ", function.GenericFuncPoint().Addcard(x))
-
 	fmt.Println("\nAdd Card New: ", function.GenericFuncPointT().AddcardT(x))
 }
