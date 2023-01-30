@@ -546,6 +546,24 @@ func Input2(x *string) {
 	*x = path
 }
 
+func Grow(arr []int) int {
+	sum := 1
+	for _, i := range arr {
+		sum *= i
+	}
+
+	return sum
+}
+
+func SquareSum(numbers []int) int {
+	sum := 0
+	for _, i := range numbers {
+		sum += (i * i)
+	}
+
+	return sum
+}
+
 func main() {
 	// PL(CreateList())
 	// PL(AppendNumber(5))
@@ -594,4 +612,7 @@ func main() {
 	// Input2(&y)
 	// Input2(&z)
 	// fmt.Println(y, z)
+
+	// fmt.Println(Grow([]int{1, 2, 6}))
+	// fmt.Println(SquareSum([]int{1, 2, 3}))
 }
