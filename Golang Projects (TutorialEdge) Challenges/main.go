@@ -11,6 +11,10 @@ import (
 	"TutorialEdge/Challenge08_CheckPermutations"
 	"TutorialEdge/Challenge09_SinglyLinkedLists"
 	"TutorialEdge/Challenge10_WordFrequencies"
+	"TutorialEdge/Challenge11_SetsAndSubsets"
+	"TutorialEdge/Challenge12_ArmstrongNumbers"
+	"TutorialEdge/Challenge13_SmallestDifferenceBetweenInts"
+	"TutorialEdge/Challenge14_LeapYear"
 	"fmt"
 )
 
@@ -46,4 +50,16 @@ func main() {
 
 	fmt.Println("\nChallenge10_WordFrequencies: ")
 	fmt.Println(Challenge10_WordFrequencies.Test())
+
+	fmt.Println("\nChallenge11_SetsAndSubsets: ")
+	fmt.Println(Challenge11_SetsAndSubsets.Test())
+
+	fmt.Println("\nChallenge12_ArmstrongNumbers: ")
+	fmt.Println(Challenge12_ArmstrongNumbers.Armstrong(371))
+
+	fmt.Println("\nChallenge13_SmallestDifferenceBetweenInts: ")
+	fmt.Println(Challenge13_SmallestDifferenceBetweenInts.Test())
+
+	fmt.Println("\nChallenge14_LeapYear: ")
+	fmt.Println(Challenge14_LeapYear.CheckLeapYear(2020))
 }
