@@ -564,6 +564,62 @@ func SquareSum(numbers []int) int {
 	return sum
 }
 
+func StockList(listArt []string, listCat []string) ([]string, []string, map[string]int, []string, []int, string) {
+	listeNam := []string{}
+	listeNum := []string{}
+	dict := make(map[string]int)
+
+	listeLet := []string{}
+	listeAmo := []int{}
+
+	emptStr := ""
+
+	// LIST CATEGORY and LIST NUMBER
+	for _, i := range listArt {
+		splt1 := strings.Split(i, " ")
+		listeNam = append(listeNam, splt1[0])
+		listeNum = append(listeNum, splt1[1])
+	}
+
+	// DICT LETTER:AMOUNT
+	/*
+		for _, word := range listeNam {
+			letter := string(word[0])
+			_, exist := dict[letter]
+
+			if exist {
+				dict[letter]++
+			} else {
+				dict[letter] = 1
+			}
+		}
+	*/
+
+	// DICT LETTER:NUMBER
+	for index, word := range listeNam {
+		letter := string(word[0])
+
+		number, _ := strconv.Atoi(listeNum[index])
+		dict[letter] += number
+	}
+
+	// LIST LETTER and LIST AMOUNT
+	for _, letterInGivingList := range listCat {
+		amount := dict[letterInGivingList]
+		listeLet = append(listeLet, letterInGivingList)
+		listeAmo = append(listeAmo, amount)
+	}
+
+	// STRING
+	for i := 0; i < len(listeLet); i++ {
+		eStr := fmt.Sprintf("(%s : %v) - ", listeLet[i], listeAmo[i])
+		emptStr += eStr
+	}
+
+	l := len(emptStr) - 3
+	return listeNam, listeNum, dict, listeLet, listeAmo, emptStr[:l]
+}
+
 func main() {
 	// PL(CreateList())
 	// PL(AppendNumber(5))
@@ -615,4 +671,8 @@ func main() {
 
 	// fmt.Println(Grow([]int{1, 2, 6}))
 	// fmt.Println(SquareSum([]int{1, 2, 3}))
+
+	// var b = []string{"BBAR 100", "CDXE 200", "BKWR 300", "BTSQ 400", "DRTY 500"}
+	// var c = []string{"A", "B", "C", "D"}
+	// fmt.Println(StockList(b, c))
 }
