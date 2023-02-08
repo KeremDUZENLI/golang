@@ -13,8 +13,64 @@ import (
 	"golang.org/x/text/language"
 )
 
-var PL = fmt.Println
-var Liste []any
+func main() {
+	Print()
+}
+
+func Print() {
+	PL := fmt.Println
+
+	liste := []interface{}{
+		// CreateList(),
+		// AppendNumber(5),
+		// EachCons([]int{1, 2, 3, 4, 5}, 3),
+		// GetInput(),
+
+		// Digitize(1089),
+		// ToAlternatingCase("Hello WOrld"),
+		// Contamination("abcd", "z"),
+		// Divisors(12),
+		// CountBy(5, 2),
+		// HighAndLow("1 2 3 4 5"),
+		// TwoSort([]string{"bitcoin", "take", "Over", "the", "world", "maybe", "who", "knows", "perhaps"}),
+		// ExpressionMatter(5, 1, 3),
+		// TwiceAsOld(42, 22),
+		// ToJadenCase("most trees are blue"),
+		// Greet("Kerem"),
+		// GetGrade1(10, 80, 100),
+		// GetGrade2(10, 80, 100),
+		// NbDig(10, 3),
+		// Evaporator(10, 10, 5),
+		// DNAtoRNA("ATGC"),
+		// DeclareWinner(Fighter{"Harald", 20, 5}, Fighter{"Harry", 5, 4}, "Harry"),
+		// AbbrevName("sam harris"),
+		// Arithmetic(8, 2, "add"),
+		// SliceString("/aaa"),
+
+		// ArrayDelete(),
+		// RowSumOddNumbers(4),
+
+		// TypeFounder(),
+		// Between(1, 4),
+		// TwoToOne("loopingisfunbutdangerousa", "lessdangerousthancodinga"),
+		// EndsWidth("abc", "ab"),
+		// FindOdd([]int{10, 20, 30, 56, 67, 90, 10, 20}),
+		// Count([]string{"a", "b", "c", "c"}, "c"),
+
+		// Grow([]int{1, 2, 6}),
+		// SquareSum([]int{1, 2, 3}),
+
+		// StockList([]string{"BBAR 100", "CDXE 200", "BKWR 300", "BTSQ 400", "DRTY 500"}, []string{"A", "B", "C", "D"}),
+	}
+
+	for _, v := range liste {
+		PL(v)
+	}
+}
+
+/*
+QUESTIONS ------------------------------------------------------------------------------------------------------------------
+*/
 
 func CreateList() []int {
 	arr := make([]int, 5)
@@ -47,10 +103,13 @@ func EachCons(arr3 []int, n int) [][]int {
 	return arrList
 }
 
-func GetInput() {
+func GetInput() string {
 	var inp string
+
+	fmt.Print("INPUT: ")
 	fmt.Scanln(&inp)
-	fmt.Println(inp)
+
+	return inp
 }
 
 func Digitize(n int) []int {
@@ -378,7 +437,7 @@ type Article struct {
 	Content     string `json:"Content"`
 }
 
-func ArrayDelete() {
+func ArrayDelete() []Article {
 	x := []Article{{"Title_1", "Description_1", "Content_1"}, {"Title_2", "Description_2", "Content_2"}}
 	// y := []Article{{}}
 
@@ -387,11 +446,11 @@ func ArrayDelete() {
 
 	x = append(x[:1], x[1+1:]...)
 
-	fmt.Println(x)
+	return x
 	// fmt.Println(y)
 }
 
-func RowSumOddNumbers(n int) {
+func RowSumOddNumbers(n int) int {
 	var liste_ext [][]int
 	var x int = -1
 
@@ -418,7 +477,7 @@ func RowSumOddNumbers(n int) {
 		total += (liste_ext[n:][0][j])
 	}
 
-	fmt.Printf("TOTAL: %v\n\n", total)
+	return total
 }
 
 func TypeFounder() any {
@@ -523,29 +582,6 @@ func Count(liste []string, findVar string) int {
 	return dict[findVar]
 }
 
-func Pointer(str string, listeOut *[]any) {
-	splt := strings.Split(str, "")
-	for _, v := range splt {
-		*listeOut = append(*listeOut, v)
-	}
-}
-
-func Input1() string {
-	var path string
-	print("Folder Path:   ")
-	fmt.Scanln(&path)
-
-	return path
-}
-
-func Input2(x *string) {
-	var path string
-	print("Folder Path:   ")
-	fmt.Scanln(&path)
-
-	*x = path
-}
-
 func Grow(arr []int) int {
 	sum := 1
 	for _, i := range arr {
@@ -564,7 +600,7 @@ func SquareSum(numbers []int) int {
 	return sum
 }
 
-func StockList(listArt []string, listCat []string) ([]string, []string, map[string]int, []string, []int, string) {
+func StockList(listArt []string, listCat []string) string {
 	listeNam := []string{}
 	listeNum := []string{}
 	dict := make(map[string]int)
@@ -617,62 +653,6 @@ func StockList(listArt []string, listCat []string) ([]string, []string, map[stri
 	}
 
 	l := len(emptStr) - 3
-	return listeNam, listeNum, dict, listeLet, listeAmo, emptStr[:l]
-}
-
-func main() {
-	// PL(CreateList())
-	// PL(AppendNumber(5))
-	// PL(EachCons([]int{1, 2, 3, 4, 5}, 3))
-
-	// GetInput()
-
-	// fmt.Println(Digitize(1089))
-	// fmt.Println(ToAlternatingCase("Hello WOrld"))
-	// fmt.Println(Contamination("abcd", "z"))
-	// fmt.Println(Divisors(12))
-	// fmt.Println(CountBy(5, 2))
-	// fmt.Println(HighAndLow("1 2 3 4 5"))
-	// fmt.Println(TwoSort([]string{"bitcoin", "take", "Over", "the", "world", "maybe", "who", "knows", "perhaps"}))
-	// fmt.Println(ExpressionMatter(5, 1, 3))
-	// fmt.Println(TwiceAsOld(42, 22))
-	// fmt.Println(ToJadenCase("most trees are blue"))
-	// fmt.Println(Greet("Kerem"))
-	// fmt.Println(GetGrade1(10, 80, 100))
-	// fmt.Println(GetGrade2(10, 80, 100))
-	// fmt.Println(NbDig(10, 3))
-	// fmt.Println(Evaporator(10, 10, 5))
-	// fmt.Println(DNAtoRNA("ATGC"))
-	// fmt.Println(DeclareWinner(Fighter{"Harald", 20, 5}, Fighter{"Harry", 5, 4}, "Harry"))
-	// fmt.Println(AbbrevName("sam harris"))
-	// fmt.Println(Arithmetic(8, 2, "add"))
-	// fmt.Println(SliceString("/aaa"))
-
-	// ArrayDelete()
-	// RowSumOddNumbers(4)
-
-	// fmt.Println(TypeFounder())
-	// fmt.Println(Between(1, 4))
-	// fmt.Println(TwoToOne("loopingisfunbutdangerousa", "lessdangerousthancodinga"))
-	// fmt.Println(EndsWidth("abc", "ab"))
-	// fmt.Println(FindOdd([]int{10, 20, 30, 56, 67, 90, 10, 20}))
-	// fmt.Println(Count([]string{"a", "b", "c", "c"}, "c"))
-
-	// Pointer("pointer", &Liste)
-	// fmt.Println(Liste)
-
-	// x := Input1()
-	// fmt.Println(x)
-
-	// var y, z string
-	// Input2(&y)
-	// Input2(&z)
-	// fmt.Println(y, z)
-
-	// fmt.Println(Grow([]int{1, 2, 6}))
-	// fmt.Println(SquareSum([]int{1, 2, 3}))
-
-	// var b = []string{"BBAR 100", "CDXE 200", "BKWR 300", "BTSQ 400", "DRTY 500"}
-	// var c = []string{"A", "B", "C", "D"}
-	// fmt.Println(StockList(b, c))
+	// return listeNam, listeNum, dict, listeLet, listeAmo, emptStr[:l]
+	return emptStr[:l]
 }
