@@ -2,20 +2,32 @@ package route
 
 import (
 	"net/http"
+	"restApiTest/configs"
 	"restApiTest/controller"
+	"restApiTest/model"
 
 	"github.com/gin-gonic/gin"
 )
 
 func URL() {
-	r := gin.Default()
+	configs.DatabaseDB()
+	configs.Database.AutoMigrate(&model.User{})
 
-	r.GET("/begin", controller.Begin)
+	ginRouter := gin.Default()
 
-	r.POST("/create", controller.Create)
-	r.GET("/read", controller.Read)
-	r.PUT("/update/:employeeID", controller.Update)
-	r.DELETE("/delete/:employeeID", controller.Delete)
+	ginRouter.GET("/begin", controller.Begin)
 
-	http.ListenAndServe(":8888", r)
+	ginRouter.POST("/create", controller.Create)
+	ginRouter.GET("/read", controller.Read)
+	ginRouter.PUT("/update/:employeeID", controller.Update)
+	ginRouter.DELETE("/delete/:employeeID", controller.Delete)
+
+	ginRouter.GET("/beginDatabase", controller.BeginDatabase)
+
+	ginRouter.POST("/createDatabase", controller.CreateDatabase)
+	ginRouter.GET("/readDatabase", controller.ReadDatabase)
+	ginRouter.PUT("/updateDatabase/:employeeID", controller.UpdateDatabase)
+	ginRouter.DELETE("/deleteDatabase/:employeeID", controller.DeleteDatabase)
+
+	http.ListenAndServe(":8888", ginRouter)
 }
