@@ -1,6 +1,9 @@
 package model
 
-import "restApiTest/configs"
+import (
+	"fmt"
+	"restApiTest/configs"
+)
 
 type User struct {
 	EmployeeID   int    `json:"employeeID"`
@@ -16,12 +19,12 @@ var Users = []User{
 	{EmployeeID: 3, Name: "C", Email: "CC@", Document: "CCC", RegisteredAt: ""},
 }
 
-// DB ----------------------------------------------------------------
-
 func (aStruct *User) DatabaseBeginUser() *[]User {
 	for _, user := range Users {
 		if configs.Database.Where("employee_id = ?", user.EmployeeID).First(&user).RecordNotFound() {
 			configs.Database.Create(&user)
+		} else {
+			fmt.Printf("user %v already exists\n", user.EmployeeID)
 		}
 	}
 
@@ -31,6 +34,8 @@ func (aStruct *User) DatabaseBeginUser() *[]User {
 func (aStruct *User) DatabaseCreateUser() *User {
 	if configs.Database.Where("employee_id = ?", aStruct.EmployeeID).First(&aStruct).RecordNotFound() {
 		configs.Database.Create(&aStruct)
+	} else {
+		fmt.Printf("user %v already exists\n", aStruct.EmployeeID)
 	}
 
 	return aStruct
@@ -42,8 +47,10 @@ func DatabaseReadUser() *[]User {
 	return &usersAll
 }
 
-func DatabaseUpdateUser() {
+func (aStruct *User) DatabaseUpdateUser() *User {
+	configs.Database.Save(&aStruct)
 
+	return aStruct
 }
 
 func DatabaseDeleteUser(id int) User {
