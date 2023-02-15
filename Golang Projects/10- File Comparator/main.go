@@ -4,14 +4,15 @@ import (
 	"FileComparator/fileCheck"
 	"FileComparator/fileCompare"
 	"FileComparator/listConvert"
-	"FileComparator/tools"
 )
 
 func main() {
 	// PATH
 	var myPath1, myPath2 string
-	tools.Input(&myPath1)
-	tools.Input(&myPath2)
+	myPath1 = ""
+	myPath2 = ""
+	// tools.Input(&myPath1)
+	// tools.Input(&myPath2)
 
 	// DATABASE
 	dataBase1 := [][]string{}
