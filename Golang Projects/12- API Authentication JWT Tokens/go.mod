@@ -3,7 +3,9 @@ module jwt
 go 1.19
 
 require (
+	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/gofiber/fiber/v2 v2.42.0
+	golang.org/x/crypto v0.6.0
 	gorm.io/driver/mysql v1.4.6
 	gorm.io/gorm v1.24.5
 )
@@ -26,5 +28,5 @@ require (
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
 	github.com/valyala/fasthttp v1.44.0 // indirect
 	github.com/valyala/tcplisten v1.0.0 // indirect
-	golang.org/x/sys v0.0.0-20220811171246-fbc7d0a398ab // indirect
+	golang.org/x/sys v0.5.0 // indirect
 )
