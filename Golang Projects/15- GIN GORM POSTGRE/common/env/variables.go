@@ -13,6 +13,8 @@ var (
 	DB_DBNAME   string
 	DB_PORT     string
 	DB_SSL      string
+
+	SECRET_KEY string
 )
 
 func Load() {
@@ -24,4 +26,6 @@ func Load() {
 	DB_DBNAME = os.Getenv("DB_DBNAME")
 	DB_PORT = os.Getenv("DB_PORT")
 	DB_SSL = os.Getenv("DB_SSL")
+
+	SECRET_KEY = os.Getenv("SECRET_KEY")
 }

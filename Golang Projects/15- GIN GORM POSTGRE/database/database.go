@@ -5,28 +5,27 @@ import (
 	"log"
 
 	"postgre-project/common/env"
-	"postgre-project/database/model"
 
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
 
-var instance *gorm.DB
+var Instance *gorm.DB
 
 func ConnectDB() *gorm.DB {
-	if instance != nil {
-		return instance
+	if Instance != nil {
+		return Instance
 	}
 
 	url := dbUrl()
 	db := gormOpen(url)
 
-	instance = db
-	return instance
+	Instance = db
+	return Instance
 }
 
 func CloseDB() {
-	db, err := instance.DB()
+	db, err := Instance.DB()
 	if err != nil {
 		log.Fatal("can not get instance")
 	}
@@ -34,10 +33,6 @@ func CloseDB() {
 	if err = db.Close(); err != nil {
 		log.Fatal("can not close database")
 	}
-}
-
-func LoadDB() {
-	ConnectDB().AutoMigrate(&model.Tables{})
 }
 
 func dbUrl() string {
