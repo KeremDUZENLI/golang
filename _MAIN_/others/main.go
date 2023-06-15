@@ -2,42 +2,31 @@ package main
 
 import (
 	"fmt"
-	"strings"
 )
 
+var myVar string
+var myVarChan = make(chan string)
+
 func main() {
-	var Liste []any
-	Pointer("pointer", &Liste)
-	fmt.Println(Liste)
+	res := scan()
+	println(res)
 
-	x := Input1()
-	fmt.Println(x)
-
-	var y, z string
-	Input2(&y)
-	Input2(&z)
-	fmt.Println(y, z)
+	go channel()
+	println(myVar, <-myVarChan)
 }
 
-func Pointer(str string, listeOut *[]any) {
-	splt := strings.Split(str, "")
-	for _, v := range splt {
-		*listeOut = append(*listeOut, v)
-	}
+func scan() string {
+	var value string
+	print("Value :   ")
+	fmt.Scanln(&value)
+
+	return value
 }
 
-func Input1() string {
-	var path string
-	print("Folder Path:   ")
-	fmt.Scanln(&path)
+func channel() {
+	x := scan()
+	y := scan()
 
-	return path
-}
-
-func Input2(x *string) {
-	var path string
-	print("Folder Path:   ")
-	fmt.Scanln(&path)
-
-	*x = path
+	myVar = x
+	myVarChan <- y
 }
