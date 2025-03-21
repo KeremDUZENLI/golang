@@ -19,7 +19,7 @@ aws lambda create-function --function-name go-lambda-function \
     --zip-file fileb://function.zip \
     --handler main \
     --runtime go1.x \
-    --role arn:aws:iam::335761394568:role/lambda-ex
+    --role arn:aws:iam::xxxxxxxxxxxx:role/lambda-ex
 
 
 aws lambda invoke \
